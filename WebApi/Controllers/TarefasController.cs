@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -57,6 +58,7 @@ namespace WebApi.Controllers
 
             return tarefa;
         }
+        
         [HttpDelete("{id}")]
         public override async Task<IActionResult> Deletar(int id)
         {
@@ -75,7 +77,9 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
+        
         [HttpGet]
+        [Authorize]
         public override async Task<ActionResult<IEnumerable<Tarefa>>> Listar()
         {
             if (_context.Tarefas == null)
