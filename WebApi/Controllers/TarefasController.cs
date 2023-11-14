@@ -79,7 +79,6 @@ namespace WebApi.Controllers
         }
         
         [HttpGet]
-        [Authorize]
         public override async Task<ActionResult<IEnumerable<Tarefa>>> Listar()
         {
             if (_context.Tarefas == null)
